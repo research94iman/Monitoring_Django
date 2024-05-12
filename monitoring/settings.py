@@ -85,17 +85,22 @@ WSGI_APPLICATION = 'monitoring.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-conf = ns.load(Path(BASE_DIR) / "conf" / "PostgresConf.yaml")
-
+# conf = ns.load(Path(BASE_DIR) / "conf" / "PostgresConf.yaml")
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': conf.dbname,
+#         'USER': conf.user,
+#         'PASSWORD': conf.password,
+#         'HOST': conf.host,
+#         'PORT': conf.port,
+#         'CONN_MAX_AGE': 20,
+#     }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': conf.dbname,
-        'USER': conf.user,
-        'PASSWORD': conf.password,
-        'HOST': conf.host,
-        'PORT': conf.port,
-        'CONN_MAX_AGE': 20,
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
