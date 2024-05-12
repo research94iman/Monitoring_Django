@@ -1,0 +1,9 @@
+media
+privateFiles
+uploads
+localFile
+temp
+outputs
+venv
+__pycache__
+.idea
