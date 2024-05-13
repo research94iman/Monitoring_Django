@@ -5,6 +5,7 @@ from django.db.models import JSONField
 
 # In[temp]
 class TempData(models.Model):
+    i = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50, null=False)
     value = models.FloatField(null=False)
     date = models.DateTimeField(null=False, default=timezone.now)
@@ -12,6 +13,7 @@ class TempData(models.Model):
 
 # In[raw json]
 class JsonShort(models.Model):
+    i = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50, null=False)
     TX = JSONField()
     RX = JSONField()
@@ -25,6 +27,7 @@ class JsonShort(models.Model):
 
 
 class JsonLong(models.Model):
+    i = models.AutoField(primary_key=True)
     Name = models.CharField(max_length=50, null=False)
     AllData = JSONField()
     Date = models.DateTimeField(null=False, default=timezone.now)
@@ -32,6 +35,7 @@ class JsonLong(models.Model):
 
 # In[Organized]
 class Net(models.Model):
+    i = models.AutoField(primary_key=True)
     ID = models.CharField(max_length=50, null=False)
     Name = models.CharField(max_length=50, null=True)
     Status = models.IntegerField(null=True)
@@ -40,6 +44,7 @@ class Net(models.Model):
 
 
 class Snmp(models.Model):
+    i = models.AutoField(primary_key=True)
     ID = models.CharField(max_length=50, null=False)
     Name = models.CharField(max_length=50, null=True)
     Status = models.IntegerField(null=True)
@@ -48,6 +53,7 @@ class Snmp(models.Model):
 
 
 class Tx(models.Model):
+    i = models.AutoField(primary_key=True)
     ID = models.CharField(max_length=50, null=False)
     Name = models.CharField(max_length=50, null=True)
     Status = models.IntegerField(null=True)
@@ -57,6 +63,7 @@ class Tx(models.Model):
 
 
 class Ctc(models.Model):
+    i = models.AutoField(primary_key=True)
     ID = models.CharField(max_length=50, null=False)
     Name = models.CharField(max_length=50, null=True)
     Status = models.IntegerField(null=True)
@@ -70,6 +77,7 @@ class Ctc(models.Model):
 
 
 class SigPrc(models.Model):
+    i = models.AutoField(primary_key=True)
     ID = models.CharField(max_length=50, null=False)
     Name = models.CharField(max_length=50, null=True)
     Status = models.IntegerField(null=True)
@@ -80,6 +88,7 @@ class SigPrc(models.Model):
 
 
 class Pcs(models.Model):
+    i = models.AutoField(primary_key=True)
     ID = models.CharField(max_length=50, null=False)
     Name = models.CharField(max_length=50, null=True)
     Status = models.IntegerField(null=True)
@@ -92,6 +101,7 @@ class Pcs(models.Model):
 
 
 class Adsb(models.Model):
+    i = models.AutoField(primary_key=True)
     ID = models.CharField(max_length=50, null=False)
     Name = models.CharField(max_length=50, null=True)
     Status = models.IntegerField(null=True)
@@ -103,6 +113,7 @@ class Adsb(models.Model):
 
 
 class Operation(models.Model):
+    i = models.AutoField(primary_key=True)
     ID = models.CharField(max_length=50, null=False)
     Name = models.CharField(max_length=50, null=True)
     Status = models.IntegerField(null=True)
