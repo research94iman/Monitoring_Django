@@ -82,24 +82,25 @@ WSGI_APPLICATION = 'monitoring.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# conf = ns.load(Path(BASE_DIR) / "conf" / "PostgresConf.yaml")
-#
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': conf.dbname,
-#         'USER': conf.user,
-#         'PASSWORD': conf.password,
-#         'HOST': conf.host,
-#         'PORT': conf.port,
-#         'CONN_MAX_AGE': 20,
-#     }
+pg_conf = ns.load(Path(BASE_DIR) / "conf" / "PostgresConf.yaml")
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': pg_conf.dbname,
+        'USER': pg_conf.user,
+        'PASSWORD': pg_conf.password,
+        'HOST': pg_conf.host,
+        'PORT': pg_conf.port,
+        'CONN_MAX_AGE': 20,
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -134,6 +135,8 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# CSRF_COOKIE_SECURE = False
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

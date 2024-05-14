@@ -9,13 +9,23 @@ import time
 import copy
 import re
 import signal
+# from faker import Faker
+
+# fake = Faker()
 
 BASE_URL = 'http://localhost:8000/data/'
+BASE_FILE_ROOT = os.path.dirname(__file__)
+JSON_LONG_SAMPLE_NAME = 'Long.json'
+JSON_SHORT_SAMPLE_NAME = 'Short.json'
+
+JSON_LONG_PATH = os.path.join(BASE_FILE_ROOT, JSON_LONG_SAMPLE_NAME)
+JSON_SHORT_PATH = os.path.join(BASE_FILE_ROOT, JSON_SHORT_SAMPLE_NAME)
+
 
 class mockTempDataGenerator:
     def __init__(self):
         # API endpoint
-        self.url = BASE_URL+'insert-temp-data/'
+        self.url = BASE_URL + 'insert-temp-data/'
         self.sensors = [
             "SMain",
             "S1",
@@ -89,8 +99,8 @@ class mockTempDataGenerator:
 class mockJsonDataGenerator:
     def __init__(self):
         # API endpoint
-        self.url = BASE_URL+'jsonShort/'
-        self.sampleJson = './Short.json'
+        self.url = BASE_URL + 'jsonShort/'
+        self.sampleJson =JSON_SHORT_PATH
 
         self.jsonData = self.readJson(self.sampleJson)
 
@@ -124,11 +134,12 @@ class mockJsonDataGenerator:
             if counter > number != -1:
                 break
 
+
 class mockJsonLongDataGenerator:
     def __init__(self):
         # API endpoint
-        self.url = BASE_URL+'jsonLong/'
-        self.sampleJson = './Long.json'
+        self.url = BASE_URL + 'jsonLong/'
+        self.sampleJson = JSON_LONG_PATH
         self.jsonData = self.readJson(self.sampleJson)
 
     def readJson(self, jsonFile):
@@ -161,11 +172,12 @@ class mockJsonLongDataGenerator:
             if counter > number != -1:
                 break
 
+
 class mockSigPrcDataGenerator:
     def __init__(self):
         # API endpoint
-        self.url = BASE_URL+'sigPrc/'
-        self.sampleJson = '.Long.json'
+        self.url = BASE_URL + 'sigPrc/'
+        self.sampleJson = JSON_LONG_PATH
 
         self.jsonData = self.readJson(self.sampleJson)
 
@@ -220,11 +232,12 @@ class mockSigPrcDataGenerator:
             if counter > number != -1:
                 break
 
+
 class mockNetDataGenerator:
     def __init__(self):
         # API endpoint
-        self.url = BASE_URL+'net/'
-        self.sampleJson = './Long.json'
+        self.url = BASE_URL + 'net/'
+        self.sampleJson = JSON_LONG_PATH
 
         self.jsonData = self.readJson(self.sampleJson)
 
@@ -262,11 +275,12 @@ class mockNetDataGenerator:
             if counter > number != -1:
                 break
 
+
 class mockSnmpDataGenerator:
     def __init__(self):
         # API endpoint
-        self.url = BASE_URL+'snmp/'
-        self.sampleJson = './Long.json'
+        self.url = BASE_URL + 'snmp/'
+        self.sampleJson = JSON_LONG_PATH
 
         self.jsonData = self.readJson(self.sampleJson)
 
@@ -306,11 +320,12 @@ class mockSnmpDataGenerator:
             if counter > number != -1:
                 break
 
+
 class mockCtcDataGenerator:
     def __init__(self):
         # API endpoint
-        self.url = BASE_URL+'ctc/'
-        self.sampleJson = './Long.json'
+        self.url = BASE_URL + 'ctc/'
+        self.sampleJson = JSON_LONG_PATH
 
         self.jsonData = self.readJson(self.sampleJson)
 
@@ -348,11 +363,12 @@ class mockCtcDataGenerator:
             if counter > number != -1:
                 break
 
+
 class mockAdsbDataGenerator:
     def __init__(self):
         # API endpoint
-        self.url = BASE_URL+'adsb/'
-        self.sampleJson = './Long.json'
+        self.url = BASE_URL + 'adsb/'
+        self.sampleJson = JSON_LONG_PATH
 
         self.jsonData = self.readJson(self.sampleJson)
 
@@ -390,11 +406,12 @@ class mockAdsbDataGenerator:
             if counter > number != -1:
                 break
 
+
 class mockPcsDataGenerator:
     def __init__(self):
         # API endpoint
-        self.url = BASE_URL+'pcs/'
-        self.sampleJson = './Long.json'
+        self.url = BASE_URL + 'pcs/'
+        self.sampleJson = JSON_LONG_PATH
 
         self.jsonData = self.readJson(self.sampleJson)
 
@@ -432,11 +449,12 @@ class mockPcsDataGenerator:
             if counter > number != -1:
                 break
 
+
 class mockTxDataGenerator:
     def __init__(self):
         # API endpoint
-        self.url = BASE_URL+'tx/'
-        self.sampleJson = './Long.json'
+        self.url = BASE_URL + 'tx/'
+        self.sampleJson = JSON_LONG_PATH
 
         self.jsonData = self.readJson(self.sampleJson)
 
@@ -475,11 +493,12 @@ class mockTxDataGenerator:
             if counter > number != -1:
                 break
 
+
 class mockOperationDataGenerator:
     def __init__(self):
         # API endpoint
-        self.url = BASE_URL+'operation/'
-        self.sampleJson = './Long.json'
+        self.url = BASE_URL + 'operation/'
+        self.sampleJson = JSON_LONG_PATH
 
         self.jsonData = self.readJson(self.sampleJson)
 
@@ -487,7 +506,6 @@ class mockOperationDataGenerator:
         with open(jsonFile, 'r') as file:
             data = json.load(file)
         return data
-
 
     def mockGen(self):
 
@@ -517,13 +535,14 @@ class mockOperationDataGenerator:
 
             if counter > number != -1:
                 break
+
+
 # In[]
 if __name__ == '__main__':
     # Generator = mockTempDataGenerator()
     # Generator.run(number=1000, sleep=1, log_interval=100)
 
-
-    listmockDataGenerator = [
+    listMockDataGenerator = [
         mockJsonLongDataGenerator(),
         mockSigPrcDataGenerator(),
         mockNetDataGenerator(),
@@ -533,16 +552,15 @@ if __name__ == '__main__':
         mockPcsDataGenerator(),
         mockTxDataGenerator(),
         mockOperationDataGenerator()
-        ]
+    ]
 
     number = 100000
     sleep = 1
     log_interval = 100
 
     process = []
-    for generator in listmockDataGenerator:
+    for generator in listMockDataGenerator:
         process.append(multiprocessing.Process(target=generator.run, args=(number, sleep, log_interval)))
-
 
     for p in process:
         p.start()
@@ -555,15 +573,12 @@ if __name__ == '__main__':
         for p in process:
             p.terminate()
 
-
-
     # G0 = mockJsonLongDataGenerator()
     # G1 = mockSigPrcDataGenerator()
     # G2 = mockNetDataGenerator()
     # G3 = mockSnmpDataGenerator()
     # G4 = mockCtcDataGenerator()
     # G5 = mockCtcDataGenerator()
-
 
     # # Create processes for each class with arguments
     # process0 = multiprocessing.Process(target=G0.run, args=(number, sleep, log_interval))
