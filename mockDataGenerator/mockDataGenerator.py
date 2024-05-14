@@ -2,7 +2,6 @@ import os.path
 import threading
 import multiprocessing
 import requests
-from faker import Faker
 import json
 from datetime import datetime
 import random
@@ -11,13 +10,12 @@ import copy
 import re
 import signal
 
-fake = Faker()
+BASE_URL = 'http://localhost:8000/data/'
 
-
-class fakeTempDataGenerator:
+class mockTempDataGenerator:
     def __init__(self):
         # API endpoint
-        self.url = 'http://localhost:8000/data/insert-temp-data/'
+        self.url = BASE_URL+'insert-temp-data/'
         self.sensors = [
             "SMain",
             "S1",
@@ -57,24 +55,24 @@ class fakeTempDataGenerator:
             v = random.uniform(self.valueRange[min_key], self.valueRange[max_key])
         return v
 
-    def fakeGen(self):
+    def mockGen(self):
         sensorName = random.choice(self.sensors)
         value = self.valueGenerator(sensorName)
-        # date = datetime.strftime(fake.date_time_this_year(), "%Y-%m-%dT%H:%M:%SZ")
+        # date = datetime.strftime(mock.date_time_this_year(), "%Y-%m-%dT%H:%M:%SZ")
         date = datetime.strftime(datetime.now(), "%Y-%m-%dT%H:%M:%SZ")
 
-        fakeData = {
+        mockData = {
             'name': sensorName,
             'value': value,  # Adjust as needed
             'date': date,
         }
-        return fakeData
+        return mockData
 
     def run(self, number=1000, sleep=1, log_interval=100):
-        print('start inserting fake temp data!!!')
+        print('start inserting mock temp data!!!')
         counter = 0
         while True:
-            data = self.fakeGen()
+            data = self.mockGen()
             response = requests.post(self.url, json=data)
             counter += 1
             time.sleep(sleep)
@@ -88,11 +86,11 @@ class fakeTempDataGenerator:
             if counter > number and number != -1:
                 break
 
-class fakeJsonDataGenerator:
+class mockJsonDataGenerator:
     def __init__(self):
         # API endpoint
-        self.url = 'http://localhost:8000/data/jsonShort/'
-        self.sampleJson = './privateFiles/Json/logShotrJson6.json'
+        self.url = BASE_URL+'jsonShort/'
+        self.sampleJson = './Short.json'
 
         self.jsonData = self.readJson(self.sampleJson)
 
@@ -101,18 +99,18 @@ class fakeJsonDataGenerator:
             data = json.load(file)
         return data
 
-    def fakeGen(self):
+    def mockGen(self):
 
-        fakedata = copy.copy(self.jsonData)
-        fakedata['name'] = os.path.basename(self.sampleJson)
+        mockdata = copy.copy(self.jsonData)
+        mockdata['name'] = os.path.basename(self.sampleJson)
 
-        return fakedata
+        return mockdata
 
     def run(self, number=1000, sleep=1, log_interval=1):
-        print('start inserting fake jsonShort data!!!')
+        print('start inserting mock jsonShort data!!!')
         counter = 0
         while True:
-            data = self.fakeGen()
+            data = self.mockGen()
             response = requests.post(self.url, json=data)
             counter += 1
             time.sleep(sleep)
@@ -126,11 +124,11 @@ class fakeJsonDataGenerator:
             if counter > number != -1:
                 break
 
-class fakeJsonLongDataGenerator:
+class mockJsonLongDataGenerator:
     def __init__(self):
         # API endpoint
-        self.url = 'http://localhost:8000/data/jsonLong/'
-        self.sampleJson = './privateFiles/Json/LatestState27.json'
+        self.url = BASE_URL+'jsonLong/'
+        self.sampleJson = './Long.json'
         self.jsonData = self.readJson(self.sampleJson)
 
     def readJson(self, jsonFile):
@@ -138,18 +136,18 @@ class fakeJsonLongDataGenerator:
             data = json.load(file)
         return data
 
-    def fakeGen(self):
-        fakedata = {}
-        fakedata['Name'] = os.path.basename(self.sampleJson)
-        fakedata['AllData'] = copy.copy(self.jsonData)
+    def mockGen(self):
+        mockdata = {}
+        mockdata['Name'] = os.path.basename(self.sampleJson)
+        mockdata['AllData'] = copy.copy(self.jsonData)
 
-        return fakedata
+        return mockdata
 
     def run(self, number=1000, sleep=1, log_interval=1):
-        print('start inserting fake Json Long data!!!')
+        print('start inserting mock Json Long data!!!')
         counter = 0
         while True:
-            data = self.fakeGen()
+            data = self.mockGen()
             response = requests.post(self.url, json=data)
             counter += 1
             time.sleep(sleep)
@@ -163,11 +161,11 @@ class fakeJsonLongDataGenerator:
             if counter > number != -1:
                 break
 
-class fakeSigPrcDataGenerator:
+class mockSigPrcDataGenerator:
     def __init__(self):
         # API endpoint
-        self.url = 'http://localhost:8000/data/sigPrc/'
-        self.sampleJson = './privateFiles/Json/LatestState27.json'
+        self.url = BASE_URL+'sigPrc/'
+        self.sampleJson = '.Long.json'
 
         self.jsonData = self.readJson(self.sampleJson)
 
@@ -176,39 +174,39 @@ class fakeSigPrcDataGenerator:
             data = json.load(file)
         return data
 
-    def _changeDelay(self, fakeDate):
+    def _changeDelay(self, mockDate):
         delay = random.randint(1, 4)
-        labelOut = int(fakeDate["Values"][1][1])
+        labelOut = int(mockDate["Values"][1][1])
         labelIn = labelOut + delay
-        fakeDate["Values"][1][1] = labelIn
-        fakeDate["Values"][2][1] = labelOut
-        return fakeDate
+        mockDate["Values"][1][1] = labelIn
+        mockDate["Values"][2][1] = labelOut
+        return mockDate
 
-    def _changeNShot(self, fakeDate):
+    def _changeNShot(self, mockDate):
         Nshot = random.randint(100, 200)
-        fakeDate["Values"][4][1] = int(Nshot)
-        return fakeDate
+        mockDate["Values"][4][1] = int(Nshot)
+        return mockDate
 
-    def fakeGen(self):
-        fakedata = {}
-        fakedata['Name'] = os.path.basename(self.sampleJson)
-        fakedata['AllData'] = copy.copy(self.jsonData)
+    def mockGen(self):
+        mockdata = {}
+        mockdata['Name'] = os.path.basename(self.sampleJson)
+        mockdata['AllData'] = copy.copy(self.jsonData)
 
-        available_fake_data = []
+        available_mock_data = []
         for item in self.jsonData:
             q = re.search("ID[0-9][0-9]SigPrc", item["ID"])
             if q:
-                available_fake_data.append(item)
-        fakedata = random.choice(available_fake_data)
-        fakedata = self._changeDelay(fakedata)
-        fakedata = self._changeNShot(fakedata)
-        return fakedata
+                available_mock_data.append(item)
+        mockdata = random.choice(available_mock_data)
+        mockdata = self._changeDelay(mockdata)
+        mockdata = self._changeNShot(mockdata)
+        return mockdata
 
     def run(self, number=1000, sleep=1, log_interval=1):
-        print('start inserting fake SigPro data!!!')
+        print('start inserting mock SigPro data!!!')
         counter = 0
         while True:
-            data = self.fakeGen()
+            data = self.mockGen()
             response = requests.post(self.url, json=data)
             counter += 1
             time.sleep(sleep)
@@ -222,11 +220,11 @@ class fakeSigPrcDataGenerator:
             if counter > number != -1:
                 break
 
-class fakeNetDataGenerator:
+class mockNetDataGenerator:
     def __init__(self):
         # API endpoint
-        self.url = 'http://localhost:8000/data/net/'
-        self.sampleJson = './privateFiles/Json/LatestState27.json'
+        self.url = BASE_URL+'net/'
+        self.sampleJson = './Long.json'
 
         self.jsonData = self.readJson(self.sampleJson)
 
@@ -235,22 +233,22 @@ class fakeNetDataGenerator:
             data = json.load(file)
         return data
 
-    def fakeGen(self):
+    def mockGen(self):
 
-        available_fake_data = []
+        available_mock_data = []
         for item in self.jsonData:
             q = re.search("NT[0-9][0-9][0-9]", item["ID"])
             if q:
-                available_fake_data.append(item)
-        fakedata = random.choice(available_fake_data)
-        # fakedata = self._changeDelay(fakedata)
-        return fakedata
+                available_mock_data.append(item)
+        mockdata = random.choice(available_mock_data)
+        # mockdata = self._changeDelay(mockdata)
+        return mockdata
 
     def run(self, number=1000, sleep=1, log_interval=1):
-        print('start inserting fake Net data!!!')
+        print('start inserting mock Net data!!!')
         counter = 0
         while True:
-            data = self.fakeGen()
+            data = self.mockGen()
             response = requests.post(self.url, json=data)
             counter += 1
             time.sleep(sleep)
@@ -264,11 +262,11 @@ class fakeNetDataGenerator:
             if counter > number != -1:
                 break
 
-class fakeSnmpDataGenerator:
+class mockSnmpDataGenerator:
     def __init__(self):
         # API endpoint
-        self.url = 'http://localhost:8000/data/snmp/'
-        self.sampleJson = './privateFiles/Json/LatestState27.json'
+        self.url = BASE_URL+'snmp/'
+        self.sampleJson = './Long.json'
 
         self.jsonData = self.readJson(self.sampleJson)
 
@@ -277,24 +275,24 @@ class fakeSnmpDataGenerator:
             data = json.load(file)
         return data
 
-    def fakeGen(self):
+    def mockGen(self):
 
-        available_fake_data = []
+        available_mock_data = []
         for item in self.jsonData:
             q1 = re.search("UPS", item["ID"])
             q2 = re.search("Generator", item["ID"])
             q3 = re.search("NetPing", item["ID"])
             if q1 or q2 or q3:
-                available_fake_data.append(item)
-        fakedata = random.choice(available_fake_data)
-        # fakedata = self._changeDelay(fakedata)
-        return fakedata
+                available_mock_data.append(item)
+        mockdata = random.choice(available_mock_data)
+        # mockdata = self._changeDelay(mockdata)
+        return mockdata
 
     def run(self, number=1000, sleep=1, log_interval=1):
-        print('start inserting fake Snmp data!!!')
+        print('start inserting mock Snmp data!!!')
         counter = 0
         while True:
-            data = self.fakeGen()
+            data = self.mockGen()
             response = requests.post(self.url, json=data)
             counter += 1
             time.sleep(sleep)
@@ -308,11 +306,11 @@ class fakeSnmpDataGenerator:
             if counter > number != -1:
                 break
 
-class fakeCtcDataGenerator:
+class mockCtcDataGenerator:
     def __init__(self):
         # API endpoint
-        self.url = 'http://localhost:8000/data/ctc/'
-        self.sampleJson = './privateFiles/Json/LatestState27.json'
+        self.url = BASE_URL+'ctc/'
+        self.sampleJson = './Long.json'
 
         self.jsonData = self.readJson(self.sampleJson)
 
@@ -321,22 +319,22 @@ class fakeCtcDataGenerator:
             data = json.load(file)
         return data
 
-    def fakeGen(self):
+    def mockGen(self):
 
-        available_fake_data = []
+        available_mock_data = []
         for item in self.jsonData:
             q1 = re.search("MainCTCCTCSoft", item["ID"])
             if q1:
-                available_fake_data.append(item)
-        fakedata = random.choice(available_fake_data)
-        # fakedata = self._changeDelay(fakedata)
-        return fakedata
+                available_mock_data.append(item)
+        mockdata = random.choice(available_mock_data)
+        # mockdata = self._changeDelay(mockdata)
+        return mockdata
 
     def run(self, number=1000, sleep=1, log_interval=1):
-        print('start inserting fake Ctc data!!!')
+        print('start inserting mock Ctc data!!!')
         counter = 0
         while True:
-            data = self.fakeGen()
+            data = self.mockGen()
             response = requests.post(self.url, json=data)
             counter += 1
             time.sleep(sleep)
@@ -350,11 +348,11 @@ class fakeCtcDataGenerator:
             if counter > number != -1:
                 break
 
-class fakeAdsbDataGenerator:
+class mockAdsbDataGenerator:
     def __init__(self):
         # API endpoint
-        self.url = 'http://localhost:8000/data/adsb/'
-        self.sampleJson = './privateFiles/Json/LatestState27.json'
+        self.url = BASE_URL+'adsb/'
+        self.sampleJson = './Long.json'
 
         self.jsonData = self.readJson(self.sampleJson)
 
@@ -363,22 +361,22 @@ class fakeAdsbDataGenerator:
             data = json.load(file)
         return data
 
-    def fakeGen(self):
+    def mockGen(self):
 
-        available_fake_data = []
+        available_mock_data = []
         for item in self.jsonData:
             q1 = re.search("ADSBMainAdsbSoft", item["ID"])
             if q1:
-                available_fake_data.append(item)
-        fakedata = random.choice(available_fake_data)
-        # fakedata = self._changeDelay(fakedata)
-        return fakedata
+                available_mock_data.append(item)
+        mockdata = random.choice(available_mock_data)
+        # mockdata = self._changeDelay(mockdata)
+        return mockdata
 
     def run(self, number=1000, sleep=1, log_interval=1):
-        print('start inserting fake Adsb data!!!')
+        print('start inserting mock Adsb data!!!')
         counter = 0
         while True:
-            data = self.fakeGen()
+            data = self.mockGen()
             response = requests.post(self.url, json=data)
             counter += 1
             time.sleep(sleep)
@@ -392,11 +390,11 @@ class fakeAdsbDataGenerator:
             if counter > number != -1:
                 break
 
-class fakePcsDataGenerator:
+class mockPcsDataGenerator:
     def __init__(self):
         # API endpoint
-        self.url = 'http://localhost:8000/data/pcs/'
-        self.sampleJson = './privateFiles/Json/LatestState27.json'
+        self.url = BASE_URL+'pcs/'
+        self.sampleJson = './Long.json'
 
         self.jsonData = self.readJson(self.sampleJson)
 
@@ -405,22 +403,22 @@ class fakePcsDataGenerator:
             data = json.load(file)
         return data
 
-    def fakeGen(self):
+    def mockGen(self):
 
-        available_fake_data = []
+        available_mock_data = []
         for item in self.jsonData:
             q1 = re.search("PCInfo", item["ID"])
             if q1:
-                available_fake_data.append(item)
-        fakedata = random.choice(available_fake_data)
-        # fakedata = self._changeDelay(fakedata)
-        return fakedata
+                available_mock_data.append(item)
+        mockdata = random.choice(available_mock_data)
+        # mockdata = self._changeDelay(mockdata)
+        return mockdata
 
     def run(self, number=1000, sleep=1, log_interval=1):
-        print('start inserting fake Pc data!!!')
+        print('start inserting mock Pc data!!!')
         counter = 0
         while True:
-            data = self.fakeGen()
+            data = self.mockGen()
             response = requests.post(self.url, json=data)
             counter += 1
             time.sleep(sleep)
@@ -434,11 +432,11 @@ class fakePcsDataGenerator:
             if counter > number != -1:
                 break
 
-class fakeTxDataGenerator:
+class mockTxDataGenerator:
     def __init__(self):
         # API endpoint
-        self.url = 'http://localhost:8000/data/tx/'
-        self.sampleJson = './privateFiles/Json/LatestState27.json'
+        self.url = BASE_URL+'tx/'
+        self.sampleJson = './Long.json'
 
         self.jsonData = self.readJson(self.sampleJson)
 
@@ -447,23 +445,23 @@ class fakeTxDataGenerator:
             data = json.load(file)
         return data
 
-    def fakeGen(self):
+    def mockGen(self):
 
-        available_fake_data = []
+        available_mock_data = []
         for item in self.jsonData:
             q1 = re.search("TXTXSoft", item["ID"])
             q2 = re.search("PA1", item["ID"])
             if q1 or q2:
-                available_fake_data.append(item)
-        fakedata = random.choice(available_fake_data)
-        # fakedata = self._changeDelay(fakedata)
-        return fakedata
+                available_mock_data.append(item)
+        mockdata = random.choice(available_mock_data)
+        # mockdata = self._changeDelay(mockdata)
+        return mockdata
 
     def run(self, number=1000, sleep=1, log_interval=1):
-        print('start inserting fake Tx data!!!')
+        print('start inserting mock Tx data!!!')
         counter = 0
         while True:
-            data = self.fakeGen()
+            data = self.mockGen()
             response = requests.post(self.url, json=data)
             counter += 1
             time.sleep(sleep)
@@ -477,11 +475,11 @@ class fakeTxDataGenerator:
             if counter > number != -1:
                 break
 
-class fakeOperationDataGenerator:
+class mockOperationDataGenerator:
     def __init__(self):
         # API endpoint
-        self.url = 'http://localhost:8000/data/operation/'
-        self.sampleJson = './privateFiles/Json/LatestState27.json'
+        self.url = BASE_URL+'operation/'
+        self.sampleJson = './Long.json'
 
         self.jsonData = self.readJson(self.sampleJson)
 
@@ -491,22 +489,22 @@ class fakeOperationDataGenerator:
         return data
 
 
-    def fakeGen(self):
+    def mockGen(self):
 
-        available_fake_data = []
+        available_mock_data = []
         for item in self.jsonData:
             q1 = re.search("PPI", item["ID"])
             if q1:
-                available_fake_data.append(item)
-        fakedata = random.choice(available_fake_data)
-        # fakedata = self._changeDelay(fakedata)
-        return fakedata
+                available_mock_data.append(item)
+        mockdata = random.choice(available_mock_data)
+        # mockdata = self._changeDelay(mockdata)
+        return mockdata
 
     def run(self, number=1000, sleep=1, log_interval=1):
-        print('start inserting fake Operation data!!!')
+        print('start inserting mock Operation data!!!')
         counter = 0
         while True:
-            data = self.fakeGen()
+            data = self.mockGen()
             response = requests.post(self.url, json=data)
             counter += 1
             time.sleep(sleep)
@@ -521,20 +519,20 @@ class fakeOperationDataGenerator:
                 break
 # In[]
 if __name__ == '__main__':
-    # Generator = fakeTempDataGenerator()
+    # Generator = mockTempDataGenerator()
     # Generator.run(number=1000, sleep=1, log_interval=100)
 
 
-    listFakeDataGenerator = [
-        fakeJsonLongDataGenerator(),
-        fakeSigPrcDataGenerator(),
-        fakeNetDataGenerator(),
-        fakeSnmpDataGenerator(),
-        fakeCtcDataGenerator(),
-        fakeAdsbDataGenerator(),
-        fakePcsDataGenerator(),
-        fakeTxDataGenerator(),
-        fakeOperationDataGenerator()
+    listmockDataGenerator = [
+        mockJsonLongDataGenerator(),
+        mockSigPrcDataGenerator(),
+        mockNetDataGenerator(),
+        mockSnmpDataGenerator(),
+        mockCtcDataGenerator(),
+        mockAdsbDataGenerator(),
+        mockPcsDataGenerator(),
+        mockTxDataGenerator(),
+        mockOperationDataGenerator()
         ]
 
     number = 100000
@@ -542,7 +540,7 @@ if __name__ == '__main__':
     log_interval = 100
 
     process = []
-    for generator in listFakeDataGenerator:
+    for generator in listmockDataGenerator:
         process.append(multiprocessing.Process(target=generator.run, args=(number, sleep, log_interval)))
 
 
@@ -559,12 +557,12 @@ if __name__ == '__main__':
 
 
 
-    # G0 = fakeJsonLongDataGenerator()
-    # G1 = fakeSigPrcDataGenerator()
-    # G2 = fakeNetDataGenerator()
-    # G3 = fakeSnmpDataGenerator()
-    # G4 = fakeCtcDataGenerator()
-    # G5 = fakeCtcDataGenerator()
+    # G0 = mockJsonLongDataGenerator()
+    # G1 = mockSigPrcDataGenerator()
+    # G2 = mockNetDataGenerator()
+    # G3 = mockSnmpDataGenerator()
+    # G4 = mockCtcDataGenerator()
+    # G5 = mockCtcDataGenerator()
 
 
     # # Create processes for each class with arguments

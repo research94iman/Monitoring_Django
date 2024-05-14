@@ -1,0 +1,968 @@
+{
+  "DeviceList": [
+    {
+      "GroupName": "TX",
+      "Sensors": [
+        {
+          "ID": "TXTXSoft",
+          "status": "Disconnected",
+          "Name": "TX",
+          "Values": [
+            {
+              "Freq": "00.00"
+            }
+          ]
+        },
+        {
+          "ID": "PA8.208.1.1",
+          "status": "Disconnected",
+          "Name": "PA 0",
+          "Values": [
+            {
+              "FRW": "-001"
+            },
+            {
+              "Rev": "00"
+            },
+            {
+              "TEMP": "-01"
+            }
+          ]
+        },
+        {
+          "ID": "PA8.208.1.2",
+          "status": "Disconnected",
+          "Name": "PA 1",
+          "Values": [
+            {
+              "FRW": "-001"
+            },
+            {
+              "Rev": "00"
+            },
+            {
+              "TEMP": "-01"
+            }
+          ]
+        },
+        {
+          "ID": "PA8.208.1.3",
+          "status": "Disconnected",
+          "Name": "PA 2",
+          "Values": [
+            {
+              "FRW": "-001"
+            },
+            {
+              "Rev": "00"
+            },
+            {
+              "TEMP": "-01"
+            }
+          ]
+        },
+        {
+          "ID": "PA8.208.1.4",
+          "status": "Disconnected",
+          "Name": "PA 3",
+          "Values": [
+            {
+              "FRW": "-001"
+            },
+            {
+              "Rev": "00"
+            },
+            {
+              "TEMP": "-01"
+            }
+          ]
+        },
+        {
+          "ID": "PA8.208.1.5",
+          "status": "Disconnected",
+          "Name": "PA 4",
+          "Values": [
+            {
+              "FRW": "-001"
+            },
+            {
+              "Rev": "00"
+            },
+            {
+              "TEMP": "-01"
+            }
+          ]
+        },
+        {
+          "ID": "PA8.208.1.6",
+          "status": "Disconnected",
+          "Name": "PA 5",
+          "Values": [
+            {
+              "FRW": "-001"
+            },
+            {
+              "Rev": "00"
+            },
+            {
+              "TEMP": "-01"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "GroupName": "RX",
+      "Sensors": [
+        {
+          "ID": "MainCTCCTCSoft",
+          "status": "Disconnected",
+          "Name": "MainCTC",
+          "Values": [
+            {
+              "TimeLabel": "000"
+            },
+            {
+              "NShotToTal": "000"
+            }
+          ]
+        },
+        {
+          "ID": "ADSBAdsbSoft",
+          "status": "Disconnected",
+          "Name": "ADSB",
+          "Values": [
+            {
+              "FrameRate": "000"
+            }
+          ]
+        },
+        {
+          "ID": "ID01SigPrc",
+          "status": "OK",
+          "Name": "SigPrcID01",
+          "Values": [
+            {
+              "TMLIn": "133"
+            },
+            {
+              "TMLOut": "132"
+            },
+            {
+              "RateMbPS": "000"
+            }
+          ]
+        },
+        {
+          "ID": "ID02SigPrc",
+          "status": "Disconnected",
+          "Name": "SigPrcID02",
+          "Values": [
+            {
+              "TMLIn": "000"
+            },
+            {
+              "TMLOut": "000"
+            },
+            {
+              "RateMbPS": "000"
+            }
+          ]
+        },
+        {
+          "ID": "ID03SigPrc",
+          "status": "Disconnected",
+          "Name": "SigPrcID03",
+          "Values": [
+            {
+              "TMLIn": "000"
+            },
+            {
+              "TMLOut": "000"
+            },
+            {
+              "RateMbPS": "000"
+            }
+          ]
+        },
+        {
+          "ID": "ID04SigPrc",
+          "status": "Disconnected",
+          "Name": "SigPrcID04",
+          "Values": [
+            {
+              "TMLIn": "000"
+            },
+            {
+              "TMLOut": "000"
+            },
+            {
+              "RateMbPS": "000"
+            }
+          ]
+        },
+        {
+          "ID": "TestSigPrc",
+          "status": "Disconnected",
+          "Name": "SigPrcTest",
+          "Values": [
+            {
+              "TMLIn": "000"
+            },
+            {
+              "TMLOut": "000"
+            },
+            {
+              "RateMbPS": "000"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "GroupName": "Operation",
+      "Sensors": [
+        {
+          "ID": "PPIT",
+          "status": "Disconnected",
+          "Name": "PPIT",
+          "Values": [
+            {
+              "NLayer": "0 "
+            },
+            {
+              "AX": "00.00 00.00"
+            },
+            {
+              "AY ": "00.00 00.00"
+            }
+          ]
+        },
+        {
+          "ID": "PPIHome",
+          "status": "Disconnected",
+          "Name": "PPIHome",
+          "Values": [
+            {
+              "NLayer": "0 "
+            },
+            {
+              "AX": "00.00 00.00"
+            },
+            {
+              "AY ": "00.00 00.00"
+            }
+          ]
+        },
+        {
+          "ID": "PPI01",
+          "status": "Disconnected",
+          "Name": "PPI01",
+          "Values": [
+            {
+              "NLayer": "0 "
+            },
+            {
+              "AX": "00.00 00.00"
+            },
+            {
+              "AY ": "00.00 00.00"
+            }
+          ]
+        },
+        {
+          "ID": "PPI02",
+          "status": "Disconnected",
+          "Name": "PPI02",
+          "Values": [
+            {
+              "NLayer": "0 "
+            },
+            {
+              "AX": "00.00 00.00"
+            },
+            {
+              "AY ": "00.00 00.00"
+            }
+          ]
+        },
+        {
+          "ID": "PPI03",
+          "status": "Disconnected",
+          "Name": "PPI03",
+          "Values": [
+            {
+              "NLayer": "0 "
+            },
+            {
+              "AX": "00.00 00.00"
+            },
+            {
+              "AY ": "00.00 00.00"
+            }
+          ]
+        },
+        {
+          "ID": "PPI03",
+          "status": "Disconnected",
+          "Name": "PPI03",
+          "Values": [
+            {
+              "NLayer": "0 "
+            },
+            {
+              "AX": "00.00 00.00"
+            },
+            {
+              "AY ": "00.00 00.00"
+            }
+          ]
+        },
+        {
+          "ID": "PPI03",
+          "status": "Disconnected",
+          "Name": "PPI03",
+          "Values": [
+            {
+              "NLayer": "0 "
+            },
+            {
+              "AX": "00.00 00.00"
+            },
+            {
+              "AY ": "00.00 00.00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "GroupName": "AllPCs",
+      "Sensors": [
+        {
+          "ID": "TestPCInfo",
+          "status": "Disconnected",
+          "Name": "Test",
+          "Values": [
+            {
+              "IP": "127.0.0.1"
+            },
+            {
+              "MemPer": "00%"
+            },
+            {
+              "CPULoad": "00%"
+            }
+          ]
+        },
+        {
+          "ID": "CTCBPCInfo",
+          "status": "Disconnected",
+          "Name": "CTCB",
+          "Values": [
+            {
+              "IP": "9.2.0.6"
+            },
+            {
+              "MemPer": "00%"
+            },
+            {
+              "CPULoad": "00%"
+            }
+          ]
+        },
+        {
+          "ID": "SigPrcPC1PCInfo",
+          "status": "Disconnected",
+          "Name": "SigPrcPC1",
+          "Values": [
+            {
+              "IP": "8.208.2.1"
+            },
+            {
+              "MemPer": "00%"
+            },
+            {
+              "CPULoad": "00%"
+            }
+          ]
+        },
+        {
+          "ID": "SigPrcPC2PCInfo",
+          "status": "Disconnected",
+          "Name": "SigPrcPC2",
+          "Values": [
+            {
+              "IP": "8.208.2.2"
+            },
+            {
+              "MemPer": "00%"
+            },
+            {
+              "CPULoad": "00%"
+            }
+          ]
+        },
+        {
+          "ID": "SigPrcPC3PCInfo",
+          "status": "Disconnected",
+          "Name": "SigPrcPC3",
+          "Values": [
+            {
+              "IP": "8.208.2.3"
+            },
+            {
+              "MemPer": "00%"
+            },
+            {
+              "CPULoad": "00%"
+            }
+          ]
+        },
+        {
+          "ID": "SigPrcPC4PCInfo",
+          "status": "Disconnected",
+          "Name": "SigPrcPC4",
+          "Values": [
+            {
+              "IP": "8.208.2.4"
+            },
+            {
+              "MemPer": "00%"
+            },
+            {
+              "CPULoad": "00%"
+            }
+          ]
+        },
+        {
+          "ID": "CTCPCPCInfo",
+          "status": "Disconnected",
+          "Name": "CTCPC",
+          "Values": [
+            {
+              "IP": "8.208.2.5"
+            },
+            {
+              "MemPer": "00%"
+            },
+            {
+              "CPULoad": "00%"
+            }
+          ]
+        },
+        {
+          "ID": "SigPrcPCSPPCInfo",
+          "status": "Disconnected",
+          "Name": "SigPrcPCSP",
+          "Values": [
+            {
+              "IP": "8.208.2.6"
+            },
+            {
+              "MemPer": "00%"
+            },
+            {
+              "CPULoad": "00%"
+            }
+          ]
+        },
+        {
+          "ID": "TXPCPCInfo",
+          "status": "Disconnected",
+          "Name": "TXPC",
+          "Values": [
+            {
+              "IP": "8.208.1.11"
+            },
+            {
+              "MemPer": "00%"
+            },
+            {
+              "CPULoad": "00%"
+            }
+          ]
+        },
+        {
+          "ID": "MonPC01PCInfo",
+          "status": "Disconnected",
+          "Name": "MonPC01",
+          "Values": [
+            {
+              "IP": "8.208.5.1"
+            },
+            {
+              "MemPer": "00%"
+            },
+            {
+              "CPULoad": "00%"
+            }
+          ]
+        },
+        {
+          "ID": "MonPC02PCInfo",
+          "status": "Disconnected",
+          "Name": "MonPC02",
+          "Values": [
+            {
+              "IP": "8.208.5.1"
+            },
+            {
+              "MemPer": "00%"
+            },
+            {
+              "CPULoad": "00%"
+            }
+          ]
+        },
+        {
+          "ID": "MonPC03PCInfo",
+          "status": "Disconnected",
+          "Name": "MonPC03",
+          "Values": [
+            {
+              "IP": "8.208.5.1"
+            },
+            {
+              "MemPer": "00%"
+            },
+            {
+              "CPULoad": "00%"
+            }
+          ]
+        },
+        {
+          "ID": "MonPC04PCInfo",
+          "status": "Disconnected",
+          "Name": "MonPC04",
+          "Values": [
+            {
+              "IP": "8.208.5.1"
+            },
+            {
+              "MemPer": "00%"
+            },
+            {
+              "CPULoad": "00%"
+            }
+          ]
+        },
+        {
+          "ID": "MonPC05PCInfo",
+          "status": "Disconnected",
+          "Name": "MonPC05",
+          "Values": [
+            {
+              "IP": "8.208.5.1"
+            },
+            {
+              "MemPer": "00%"
+            },
+            {
+              "CPULoad": "00%"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "GroupName": "SNMPAgents",
+      "Sensors": [
+        {
+          "ID": "NetPing",
+          "status": "OK",
+          "Name": "NetPing",
+          "Values": [
+            {
+              "IP": "192.168.0.100"
+            },
+            {
+              "Temp.0": null
+            },
+            {
+              "Humidity": null
+            }
+          ]
+        },
+        {
+          "ID": "NetPing",
+          "status": "OK",
+          "Name": "NetPing",
+          "Values": [
+            {
+              "IP": "192.168.0.100"
+            },
+            {
+              "Temp.0": null
+            },
+            {
+              "Humidity": null
+            }
+          ]
+        },
+        {
+          "ID": "NetPing",
+          "status": "OK",
+          "Name": "NetPing",
+          "Values": [
+            {
+              "IP": "192.168.0.100"
+            },
+            {
+              "Temp.0": null
+            },
+            {
+              "Humidity": null
+            }
+          ]
+        },
+        {
+          "ID": "RXGenerator01",
+          "status": "OK",
+          "Name": "RXGenerator01",
+          "Values": [
+            {
+              "IP": "8.208.2.151"
+            },
+            {
+              "sysUpTime.": "5 hours 47 minu"
+            },
+            {
+              "mainsFreq.": "0"
+            }
+          ]
+        },
+        {
+          "ID": "RXGenerator02",
+          "status": "OK",
+          "Name": "RXGenerator02",
+          "Values": [
+            {
+              "IP": "8.208.2.152"
+            },
+            {
+              "sysUpTime.": "5 hours 47 minu"
+            },
+            {
+              "mainsFreq.": "0"
+            }
+          ]
+        },
+        {
+          "ID": "UPS RX",
+          "status": "OK",
+          "Name": "UPS RX",
+          "Values": [
+            {
+              "IP": "8.208.2.153"
+            }
+          ]
+        },
+        {
+          "ID": "TXGenerator01",
+          "status": "OK",
+          "Name": "TXGenerator01",
+          "Values": [
+            {
+              "IP": "8.208.1.151"
+            },
+            {
+              "sysUpTime.": "5 hours 47 minu"
+            },
+            {
+              "mainsFreq.": "0"
+            }
+          ]
+        },
+        {
+          "ID": "RXGenerator02",
+          "status": "OK",
+          "Name": "RXGenerator02",
+          "Values": [
+            {
+              "IP": "8.208.1.152"
+            },
+            {
+              "sysUpTime.": "5 hours 47 minu"
+            },
+            {
+              "mainsFreq.": "0"
+            }
+          ]
+        },
+        {
+          "ID": "UPS TX",
+          "status": "OK",
+          "Name": "UPS TX",
+          "Values": [
+            {
+              "IP": "8.208.1.153"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "GroupName": "SherkatNet",
+      "Sensors": [
+        {
+          "ID": "NT100",
+          "status": "Disconnected",
+          "Values": [
+            {
+              "IP": "192.168.100.22"
+            },
+            {
+              "TTL": "-"
+            }
+          ],
+          "Name": "Server"
+        },
+        {
+          "ID": "NT101",
+          "status": "Disconnected",
+          "Values": [
+            {
+              "IP": "192.168.111.14"
+            },
+            {
+              "TTL": "-"
+            }
+          ],
+          "Name": "Miz"
+        },
+        {
+          "ID": "NT102",
+          "status": "Disconnected",
+          "Values": [
+            {
+              "IP": "192.168.111.1"
+            },
+            {
+              "TTL": "-"
+            }
+          ],
+          "Name": "GW"
+        },
+        {
+          "ID": "NT103",
+          "status": "OK",
+          "Values": [
+            {
+              "IP": "127.0.0.1"
+            },
+            {
+              "TTL": "128"
+            }
+          ],
+          "Name": "ME"
+        },
+        {
+          "ID": "NT104",
+          "status": "Disconnected",
+          "Values": [
+            {
+              "IP": "192.168.100.11"
+            },
+            {
+              "TTL": "-"
+            }
+          ],
+          "Name": "old"
+        },
+        {
+          "ID": "NT105",
+          "status": "OK",
+          "Values": [
+            {
+              "IP": "LocalHost"
+            },
+            {
+              "TTL": "128"
+            }
+          ],
+          "Name": "T5"
+        }
+      ]
+    },
+    {
+      "GroupName": "RXNet",
+      "Sensors": [
+        {
+          "ID": "NT106",
+          "status": "Disconnected",
+          "Values": [
+            {
+              "IP": "8.208.2.5"
+            },
+            {
+              "TTL": "-"
+            }
+          ],
+          "Name": "CTC"
+        },
+        {
+          "ID": "NT107",
+          "status": "Disconnected",
+          "Values": [
+            {
+              "IP": "8.208.2.1"
+            },
+            {
+              "TTL": "-"
+            }
+          ],
+          "Name": "RX1"
+        },
+        {
+          "ID": "NT108",
+          "status": "Disconnected",
+          "Values": [
+            {
+              "IP": "8.208.2.2"
+            },
+            {
+              "TTL": "-"
+            }
+          ],
+          "Name": "RX2"
+        },
+        {
+          "ID": "NT109",
+          "status": "Disconnected",
+          "Values": [
+            {
+              "IP": "8.208.2.3"
+            },
+            {
+              "TTL": "-"
+            }
+          ],
+          "Name": "RX3"
+        },
+        {
+          "ID": "NT110",
+          "status": "Disconnected",
+          "Values": [
+            {
+              "IP": "8.208.2.3"
+            },
+            {
+              "TTL": "-"
+            }
+          ],
+          "Name": "RX4"
+        },
+        {
+          "ID": "NT111",
+          "status": "Disconnected",
+          "Values": [
+            {
+              "IP": "8.208.2.3"
+            },
+            {
+              "TTL": "-"
+            }
+          ],
+          "Name": "RX5"
+        }
+      ]
+    },
+    {
+      "GroupName": "TXNet",
+      "Sensors": [
+        {
+          "ID": "NT112",
+          "status": "Disconnected",
+          "Values": [
+            {
+              "IP": "8.208.1.1"
+            },
+            {
+              "TTL": "-"
+            }
+          ],
+          "Name": "PWA1"
+        },
+        {
+          "ID": "NT113",
+          "status": "Disconnected",
+          "Values": [
+            {
+              "IP": "8.208.1.2"
+            },
+            {
+              "TTL": "-"
+            }
+          ],
+          "Name": "PWA2"
+        },
+        {
+          "ID": "NT114",
+          "status": "Disconnected",
+          "Values": [
+            {
+              "IP": "8.208.1.3"
+            },
+            {
+              "TTL": "-"
+            }
+          ],
+          "Name": "PWA3"
+        },
+        {
+          "ID": "NT115",
+          "status": "Disconnected",
+          "Values": [
+            {
+              "IP": "8.208.1.4"
+            },
+            {
+              "TTL": "-"
+            }
+          ],
+          "Name": "PWA4"
+        },
+        {
+          "ID": "NT116",
+          "status": "Disconnected",
+          "Values": [
+            {
+              "IP": "8.208.1.5"
+            },
+            {
+              "TTL": "-"
+            }
+          ],
+          "Name": "PWA5"
+        },
+        {
+          "ID": "NT117",
+          "status": "Disconnected",
+          "Values": [
+            {
+              "IP": "8.208.1.6"
+            },
+            {
+              "TTL": "-"
+            }
+          ],
+          "Name": "PWA6"
+        },
+        {
+          "ID": "NT118",
+          "status": "Disconnected",
+          "Values": [
+            {
+              "IP": "192.168.110.1"
+            },
+            {
+              "TTL": "-"
+            }
+          ],
+          "Name": "PCTX"
+        }
+      ]
+    }
+  ]
+}
