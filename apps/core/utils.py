@@ -7,6 +7,7 @@ from apps.dataStoring.utils import JsonToDB
 
 def readConfig(file_path=settings.CONFIG_FILE_PATH):
     print(file_path)
+    time.sleep(1)
     config = configparser.ConfigParser()
     config.read(file_path)
     return  config
