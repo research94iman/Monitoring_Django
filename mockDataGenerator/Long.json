@@ -3156,11 +3156,11 @@
       ],
       [
         "DacFreq",
-        "0"
+        "178000000"
       ],
       [
         "DacPhases",
-        "0,0,0,0,0"
+        "12.5,32,0,7,0"
       ]
     ],
     "Name": "TX"
@@ -4100,8 +4100,8 @@
   {
     "ID": "CTCBPCInfo",
     "status": "Disconnected",
-    "MemPer": "00%",
-    "CPULoad": "00%",
+    "MemPer": "24%",
+    "CPULoad": "7%",
     "Values": [
       [
         "Name",
@@ -4109,35 +4109,35 @@
       ],
       [
         "MemPer",
-        "00%"
+        "11%"
       ],
       [
         "Tempreture[c]",
-        "0"
+        "43"
       ],
       [
         "CPULoad",
-        "00%"
+        "12%"
       ],
       [
         "NCPUCore",
-        "0"
+        "14"
       ],
       [
         "MemoryAvailable",
-        "0"
+        "24"
       ],
       [
         "GPUTempereture",
-        "0"
+        "44"
       ],
       [
         "GPULoadMemory",
-        "0"
+        "7.5"
       ],
       [
         "NHardDisks",
-        "0"
+        "2"
       ]
     ],
     "HDDValues": [
