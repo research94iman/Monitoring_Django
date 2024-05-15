@@ -338,7 +338,7 @@ class mockCtcDataGenerator:
 
         available_mock_data = []
         for item in self.jsonData:
-            q1 = re.search("MainCTCCTCSoft", item["ID"])
+            q1 = re.search("CTCSoft", item["ID"])
             if q1:
                 available_mock_data.append(item)
         mockdata = random.choice(available_mock_data)
@@ -468,7 +468,7 @@ class mockTxDataGenerator:
         available_mock_data = []
         for item in self.jsonData:
             q1 = re.search("TXTXSoft", item["ID"])
-            q2 = re.search("PA1", item["ID"])
+            q2 = re.search("PA", item["ID"])
             if q1 or q2:
                 available_mock_data.append(item)
         mockdata = random.choice(available_mock_data)

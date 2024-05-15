@@ -227,7 +227,7 @@ class JsonToDB:
     def _ctc(self, jsonData):
         rows = []
         for item in jsonData:
-            q = re.search("MainCTCCTCSoft", item["ID"])
+            q = re.search("CTCSoft", item["ID"])
             if q:
                 rows.append(item)
         cleanData = [convertRequestDataToCtcTableColumn(r) for r in rows]
@@ -279,7 +279,7 @@ class JsonToDB:
         rows = []
         for item in jsonData:
             q1 = re.search("TXTXSoft", item["ID"])
-            q2 = re.search("PA1", item["ID"])
+            q2 = re.search("PA", item["ID"])
             if q1 or q2:
                 rows.append(item)
         cleanData = [convertRequestDataToTxTableColumn(r) for r in rows]
