@@ -381,7 +381,7 @@ class mockAdsbDataGenerator:
 
         available_mock_data = []
         for item in self.jsonData:
-            q1 = re.search("ADSBMainAdsbSoft", item["ID"])
+            q1 = re.search("ADSB", item["ID"])
             if q1:
                 available_mock_data.append(item)
         mockdata = random.choice(available_mock_data)

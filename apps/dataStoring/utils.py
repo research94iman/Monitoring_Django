@@ -244,7 +244,7 @@ class JsonToDB:
     def _adsb(self, jsonData):
         rows = []
         for item in jsonData:
-            q = re.search("ADSBMainAdsbSoft", item["ID"])
+            q = re.search("ADSB", item["ID"])
             if q:
                 rows.append(item)
         cleanData = [convertRequestDataToAdsbTableColumn(r) for r in rows]
