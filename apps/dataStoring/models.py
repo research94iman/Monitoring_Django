@@ -59,7 +59,7 @@ class Tx(models.Model):
     Status = models.IntegerField(null=True)
     Values = JSONField(null=True)
     Message = models.CharField(max_length=200, null=True, blank=True)
-    Date = models.DateTimeField(null=False, default=timezone.now)
+    Date = models.DateTimeField(null=False, auto_now_add=True)
 
 
 class Ctc(models.Model):
